@@ -51,6 +51,12 @@
     if (!this.imageSrc && this.$element.is('img')) {
       this.imageSrc = this.$element.attr('src');
     }
+    
+    if (!this.container) {
+      this.container = 'body';
+    }
+    
+    this.$container = $(this.container); 
 
     var positions = (this.position + '').toLowerCase().match(/\S+/g) || [];
 
@@ -113,7 +119,7 @@
       return this;
     }
 
-    this.$mirror = $('<div />').prependTo('body');
+    this.$mirror = $('<div />').prependTo(this.$container);
 
     var slider = this.$element.find('>.parallax-slider');
     var sliderExisted = false;
